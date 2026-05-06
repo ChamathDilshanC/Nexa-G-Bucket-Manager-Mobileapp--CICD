@@ -1,0 +1,6 @@
+[submodule "Nexa-G-Bucket Manager-frontend"]
+	path = Nexa-G-Bucket Manager-frontend
+	url = https://github.com/ChamathDilshanC/Nexa-G-Bucket-Manager-frontend.git
+[submodule "Nexa-G-Bucket Manager-backend"]
+	path = Nexa-G-Bucket Manager-backend
+	url = https://github.com/ChamathDilshanC/Nexa-G-Bucket-Manager-backend.git
