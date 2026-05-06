@@ -1,13 +1,13 @@
 # GCP Mobile File Manager (CloudBucket)
 
-A production-oriented mobile file manager that lets users authenticate with Google, discover their Google Cloud Storage buckets, and securely manage files from a React Native app.  
+A production-oriented mobile file manager that lets users authenticate with Google, discover their Google Cloud Storage buckets, and securely manage files from a React Native app.
 The platform combines a modern Expo mobile client with a FastAPI backend, Supabase authentication, and GCP Storage to deliver fast, secure, and scalable cloud file operations.
 
 ---
 
 ## 1) Project Overview
 
-CloudBucket is a mobile-first application designed for users who need direct, reliable access to their own Google Cloud Storage (GCS) buckets.  
+CloudBucket is a mobile-first application designed for users who need direct, reliable access to their own Google Cloud Storage (GCS) buckets.
 It focuses on secure identity management, low-latency file operations, and clean architecture that separates authentication, API orchestration, and storage execution.
 
 The system uses:
