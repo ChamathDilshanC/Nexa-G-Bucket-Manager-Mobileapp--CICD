@@ -27,9 +27,9 @@ The system uses:
 3. Mobile app calls FastAPI endpoints with Supabase JWT.
 4. FastAPI validates JWT and retrieves user-linked cloud context.
 5. FastAPI uses GCP credentials (service account or delegated access) to:
-   - list buckets/files,
-   - create presigned upload/download URLs,
-   - perform controlled delete operations.
+   - create/list/update/delete buckets,
+   - list/create/update/delete file metadata operations,
+   - create presigned upload/download URLs.
 6. Mobile app uploads/downloads directly to/from GCP using presigned URLs.
 7. Backend records metadata/audit events (optional) for observability and traceability.
 
@@ -65,7 +65,7 @@ The system uses:
 ## 3) Key Features
 
 - Google OAuth login powered by Supabase.
-- Secure bucket listing per authenticated user.
+- Full bucket CRUD (create, list, update metadata, delete) per authenticated user policy.
 - File listing with metadata (name, size, type, updated time).
 - Direct file upload from device using **presigned URLs**.
 - Direct file download/view using **presigned URLs**.
@@ -166,7 +166,8 @@ cloudbucket/
 ### Phase 2: Backend API for GCP Integration
 
 - Configure GCP service account and storage client wrapper.
-- Build `GET /buckets` and `GET /buckets/{bucket}/files`.
+- Build bucket CRUD endpoints (`POST/GET/PATCH/DELETE /buckets`).
+- Build file endpoints (`GET /buckets/{bucket}/files`, delete, and signed URL flows).
 - Add secure authorization guard per user or tenant mapping.
 - Implement structured error handling and logging.
 - Add basic integration tests.
@@ -272,7 +273,10 @@ uvicorn app.main:app --reload --port 8000
 | Method | Endpoint | Purpose |
 |---|---|---|
 | GET | `/health` | Service health check |
+| POST | `/buckets` | Create a new bucket (policy-controlled) |
 | GET | `/buckets` | List user-accessible buckets |
+| PATCH | `/buckets/{bucket}` | Update bucket metadata/config (safe subset) |
+| DELETE | `/buckets/{bucket}` | Delete an empty bucket (or force policy) |
 | GET | `/buckets/{bucket}/files` | List files in bucket |
 | POST | `/files/upload-url` | Generate presigned upload URL |
 | POST | `/files/download-url` | Generate presigned download URL |
