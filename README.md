@@ -221,7 +221,7 @@ cloudbucket/
 ```bash
 EXPO_PUBLIC_SUPABASE_URL=your_supabase_project_url
 EXPO_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-EXPO_PUBLIC_API_BASE_URL=https://your-backend-domain.com
+EXPO_PUBLIC_API_BASE_URL=https://nexa-g-bucket-manager-backend.vercel.app
 ```
 
 #### `backend/.env`
